@@ -19,6 +19,26 @@ nav .brand-logo {
     float: left;
 }
 
+#members img {
+	height: 50px;
+	width: 50px;
+}
+
+#members .online img {
+	border: 1px green;
+}
+
+#members {
+    white-space: nowrap;
+    /* Optional overflow-x:hidden */
+}
+
+#members div {
+    height: 275px;
+    width: 275px;
+    background: #000000;
+}
+
 iframe {
     float: right;
 }

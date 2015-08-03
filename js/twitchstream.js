@@ -6,7 +6,7 @@
 // Rewritten with hitbox support by freaktechnik
 
 var twitchUser = "QTFollow",
-    hitbox = ['maxfirestorm'],
+    hitbox = ['100chilly'],
     social = {kweeeeh: "kweh"},
 
     Page = {
@@ -129,11 +129,11 @@ var twitchUser = "QTFollow",
                 game = 'Playing: ';
                 liveClass = 'online';
             }
-            jQuery('#members').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a class="member ' + liveClass + '" id="' + user.name + '" href="#' + user.name + '">');
+            jQuery('#members').append('<div class="col s6 m5"><a class="member card-panel black amber-text text-darken-4' + liveClass + '" id="' + user.name + '" href="#' + user.name + '">');
 
-            jQuery('#' + user.name).append('<img src="' + user.avatar + '" alt="' + user.name + '">');
+            jQuery('#' + user.name).append('<img class="circle" src="' + user.avatar + '" alt="' + user.name + '">');
             jQuery('#' + user.name).append('<p class="viewers pull-right">' + viewers + '</p>');
-            jQuery('#' + user.name).append('<h3 class="member-name">' + user.name + '</h3>');
+            jQuery('#' + user.name).append('<h6 class="member-name">' + user.name + '</h6>');
             jQuery('#' + user.name).append('<p class="game">' + game + user.game + '</p>');
             if(social.hasOwnProperty(user.name)) {
                 jQuery('#' + data[0]).append('<a class="social pull-right" href="/members/' + social[user.name] + '/profile/">View QT profile</a>');
@@ -178,7 +178,7 @@ var twitchUser = "QTFollow",
         },
         // Set the title for the given user
         setTitle: function(user) {
-            var title = user.live() ? 'Live: ' + user.name + ' playing ' + user.game : user.name + ' is in another castle';
+            var title = user.live() ? 'Live: ' + user.name + ' playing ' + user.game : user.name + ' is in another world';
             jQuery('span.stitle').html(title);
         }
     },
