@@ -129,10 +129,10 @@ var twitchUser = "QTFollow",
                 game = 'Playing: ';
                 liveClass = 'online';
             }
-            jQuery('#members').append('<div class="col s6 m5"><a class="member card-panel black amber-text text-darken-4' + liveClass + '" id="' + user.name + '" href="#' + user.name + '">');
+            jQuery('#members').append('<div class="col s6 l4"><a class="member black amber-text text-darken-4' + liveClass + '" id="' + user.name + '" href="#' + user.name + '">');
 
             jQuery('#' + user.name).append('<img class="circle" src="' + user.avatar + '" alt="' + user.name + '">');
-            jQuery('#' + user.name).append('<p class="viewers pull-right">' + viewers + '</p>');
+            jQuery('#' + user.name).append('<p class="viewers">' + viewers + '</p>');
             jQuery('#' + user.name).append('<h6 class="member-name">' + user.name + '</h6>');
             jQuery('#' + user.name).append('<p class="game">' + game + user.game + '</p>');
             if(social.hasOwnProperty(user.name)) {
@@ -410,7 +410,7 @@ jQuery(document).ready(function( $ ) {
                     else {
                         UserList.getUserByName(user.channel.name).twitch = user.channel.name;
                     }
-                    
+
                     if(i+1 == a.length) {
                         // Load all twitch user's user data plus their livestatus
                         UserList.updateTwitch(UserList.getTwitchUsers());

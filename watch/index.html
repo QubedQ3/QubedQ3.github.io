@@ -1,126 +1,149 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript">
-			window.ParsleyConfig = { excluded: ".exclude" };
-			var usp_case_sensitivity = "false";
-			var usp_challenge_response = "2";
-		</script>
-<script type='text/javascript' src='../js/jquery/jquery.js?ver=1.11.2'></script>
-<script type='text/javascript' src='../js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
-<script type='text/javascript' src="../js/twitchstream.js"></script>
-<script type='text/javascript' src='../js/jquery/ui/core.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/widget.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/position.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/menu.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/autocomplete.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/button.min.js?ver=1.11.4'></script>
-<script type='text/javascript' src='../js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Qubed C3 - Twitch/Hitbox Streams</title>
+    <script type="text/javascript">
+        window.ParsleyConfig = {excluded: ".exclude"};
+        var usp_case_sensitivity = "false";
+        var usp_challenge_response = "2";
+    </script>
+    <script src='../js/jquery/jquery.js?ver=1.11.2'></script>
+    <script src='../js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+    <script src="../js/twitchstream.js"></script>
+    <script src='../js/jquery/ui/core.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/position.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/menu.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/autocomplete.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/button.min.js?ver=1.11.4'></script>
+    <script src='../js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+    <script src='../js/init.js'></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Qubed C3 - Twitch/Hitbox Streams</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <link href="../css/style.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
 </head>
 <body class="black">
-  <nav class="black" role="navigation">
+<nav class="black" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="../" class="brand-logo white-text"><img src="../img/4adb656c.png""></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="white-text" href="./watch">Twitch/Hitbox Streams</a></li>
-      </ul>
+        <a id="logo-container" href="../" class="brand-logo white-text"><img
+                src="../img/4adb656c.png""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="white-text" href="./watch">Twitch/Hitbox Streams</a>
+            </li>
+        </ul>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="./">Twitch/Hitbox Streams</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="./">Twitch/Hitbox Streams</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i
+                class="material-icons">menu</i></a>
     </div>
-  </nav>
+</nav>
 
-  <div id="index-banner" class="container">
+<div id="index-banner" class="container">
     <div class="section no-pad-bot">
-      <div class="streaming row" id="content" role="main">
-                <h1 class="page-title white-text"><span class="stitle"></span></h1>
-                <!-- Player -->
-                <section id="top">
-                    <div id="player">
-                        <div class="">
-                            <object type="application/x-shockwave-flash" height="450" width="70%" class="live_embed_player" id="live_embed_player_flash" data="" bgcolor="#181818">
-                                <param name="allowFullScreen" value="true" />
-                                <param name="allowScriptAccess" value="always" />
-                                <param name="allowNetworking" value="all" />
-                                <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
-                                <param name="flashvars" value="hostname=www.twitch.tv&auto_play=false&start_volume=25" />
-                                <param name="wmode" value="opaque" />
-                            </object>
-                            <iframe width="70%" height="450" src="" frameborder="0" class="live_embed_player" id="hitbox_player" allowfullscreen></iframe>
-							<iframe frameborder="0" scrolling="no" id="chat_embed" src="" height="450" width="29%"></iframe>
-                        </div>
+        <div class="streaming row" id="content" role="main">
+            <h1 class="page-title white-text"><span class="stitle"></span></h1>
+            <!-- Player -->
+            <section id="top">
+                <div id="player">
+                    <div class="">
+                        <object type="application/x-shockwave-flash"
+                                height="450" width="70%"
+                                class="live_embed_player"
+                                id="live_embed_player_flash" data=""
+                                bgcolor="#181818">
+                            <param name="allowFullScreen" value="true"/>
+                            <param name="allowScriptAccess" value="always"/>
+                            <param name="allowNetworking" value="all"/>
+                            <param name="movie"
+                                   value="http://www.twitch.tv/widgets/live_embed_player.swf"/>
+                            <param name="flashvars"
+                                   value="hostname=www.twitch.tv&auto_play=false&start_volume=25"/>
+                            <param name="wmode" value="opaque"/>
+                        </object>
+                        <iframe width="70%" height="450" src="" frameborder="0"
+                                class="live_embed_player" id="hitbox_player"
+                                allowfullscreen></iframe>
+                        <iframe frameborder="0" scrolling="no" id="chat_embed"
+                                src="" height="450" width="29%"></iframe>
                     </div>
-					</section>
-				</div>
-			</div>
-		</div>
-
-	<div class="row container">
-		<ul class="collection">
-		<li class="collection-item black white-text">When someone is live, the video should load automatically.</li>
-		<li class="collection-item black white-text">You can also see the live status of our streamers below on their own channels. If you want to switch to a different, channel, simply click on the corresponding box!</li>
-		</ul>
-          <h6 id="members"></h6>
+                </div>
+            </section>
         </div>
-	
-	
-  <footer class="page-footer black">
+    </div>
+</div>
+
+<div class="row container">
+    <ul class="collection">
+        <li class="collection-item black white-text">When someone is live, the
+            video should load automatically.
+        </li>
+        <li class="collection-item black white-text">You can also see the live
+            status of our streamers below on their own channels. If you want to
+            switch to a different, channel, simply click on the corresponding
+            box!
+        </li>
+    </ul>
+    <h6 id="members"></h6>
+</div>
+
+
+<footer class="page-footer black">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">About us</h5>
-          <p class="white-text">Todo!</p>
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">About us</h5>
+
+                <p class="white-text">Todo!</p>
 
 
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="footer-copyright">
-      <div class="container white-text">
-      Made by <a class="blue-text" href="https://www.100chilly.me/">100chilly</a>
-      </div>
+        <div class="container white-text">
+            Made by <a class="blue-text" href="https://www.100chilly.me/">100chilly</a>
+        </div>
     </div>
-  </footer>
+</footer>
 
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../js/materialize.js"></script>
-  <script src="../js/init.js"></script>
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../js/materialize.js"></script>
+<script src="../js/init.js"></script>
 
-  </body>
+</body>
 </html>
