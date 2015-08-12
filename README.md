@@ -1,4 +1,4 @@
-# QubedC3.github.io
+# QubedQ3.github.io
 Content/Source for Qubed C3's Website
 
 ##List of Contributors/Programmers
