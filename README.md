@@ -1,5 +1,5 @@
 # QubedQ3.github.io
-Content/Source for Qubed C3's Website
+Content/Source for Qubed Q3's Website
 
 ##List of Contributors/Programmers
 1. @100chilly
