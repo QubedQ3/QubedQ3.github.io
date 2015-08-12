@@ -5,7 +5,7 @@
 // Modded by Kweh for use on the Qubetubers site.
 // Rewritten with hitbox support by freaktechnik
 
-var twitchUser = "QTFollow",
+var twitchUser = "qubed_q3",
     hitbox = ['100chilly'],
     social = {kweeeeh: "kweh"},
 
@@ -341,7 +341,7 @@ User.prototype.tlive = false;
 // true, if the user is live on hitbox
 User.prototype.hlive = false;
 // An URL pointing to an avatar image representing this user
-User.prototype.avatar = "/wp-content/themes/qt/img/qt-default.png";
+User.prototype.avatar = "";
 // The displayed name for this user
 User.prototype.name = "Unknown";
 // Number of viewers this user currently has. Can only be for one source (case where a user is live on two services should be rare enough to ignore it for now)
@@ -383,7 +383,7 @@ jQuery(document).ready(function( $ ) {
                     return !user.live();
                 });
                 if(allOffline) {
-                    Page.showPlayer(UserList.getTwitchUserByName("qubetubers"));
+                    Page.showPlayer(UserList.getTwitchUserByName("harrihu_inkpen"));
                 }
                 else {
                     UserList.list.some(function(user) {
