@@ -5,7 +5,7 @@
 // Modded by Kweh for use on the Qubetubers site.
 // Rewritten with hitbox support by freaktechnik
 
-var twitchUser = "qubed_q3",
+var twitchUser = "qubedq3follows",
     hitbox = ['100chilly'],
     social = {kweeeeh: "kweh"},
 
@@ -380,7 +380,7 @@ jQuery(document).ready(function( $ ) {
                     return !user.live();
                 });
                 if(allOffline) {
-                    Page.showPlayer(UserList.getTwitchUserByName("harrihu_inkpen"));
+                    Page.showPlayer(UserList.getTwitchUserByName("qubed_q3"));
                 }
                 else {
                     UserList.list.some(function(user) {
