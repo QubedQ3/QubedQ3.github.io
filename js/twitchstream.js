@@ -135,9 +135,6 @@ var twitchUser = "qubed_q3",
             jQuery('#' + user.name).append('<p class="viewers">' + viewers + '</p>');
             jQuery('#' + user.name).append('<h6 class="member-name">' + user.name + '</h6>');
             jQuery('#' + user.name).append('<p class="game">' + game + user.game + '</p>');
-            if(social.hasOwnProperty(user.name)) {
-                jQuery('#' + data[0]).append('<a class="social pull-right" href="/members/' + social[user.name] + '/profile/">View QT profile</a>');
-            }
             jQuery('#' + user.name).append('</a></div>');
         },
         // Updates the content of the little user card
@@ -297,7 +294,7 @@ var twitchUser = "qubed_q3",
         // Each user with hitbox has to be hit individually by this function.
         updateHitbox: function(user) {
             var that = this;
-            jQuery.getJSON('http://api.hitbox.tv/media/live/' + user.hitbox, function(d) {
+            jQuery.getJSON('https://api.hitbox.tv/media/live/' + user.hitbox, function(d) {
                 if(typeof d == 'object') {
                     user.hlive = d.livestream[0].media_is_live != "0";
                     if(user.hlive && !user.tlive) {
@@ -341,7 +338,7 @@ User.prototype.tlive = false;
 // true, if the user is live on hitbox
 User.prototype.hlive = false;
 // An URL pointing to an avatar image representing this user
-User.prototype.avatar = "";
+User.prototype.avatar = "../img/fYdty6yd.png";
 // The displayed name for this user
 User.prototype.name = "Unknown";
 // Number of viewers this user currently has. Can only be for one source (case where a user is live on two services should be rare enough to ignore it for now)
