@@ -6,7 +6,7 @@
 // Rewritten with hitbox support by freaktechnik
 
 var twitchUser = "qubedq3follows",
-    hitbox = ['100chilly'],
+    hitbox = ["100chilly", "Soldjermon", "JennyLeeP"],
     social = {kweeeeh: "kweh"},
 
     Page = {
@@ -175,7 +175,7 @@ var twitchUser = "qubedq3follows",
         },
         // Set the title for the given user
         setTitle: function(user) {
-            var title = user.live() ? 'Live: ' + user.name + ' playing ' + user.game : user.name + ' is in another world';
+            var title = user.live() ? 'Live: ' + user.name + ' playing ' + user.game : user.name + ' is eating cake';
             jQuery('span.stitle').html(title);
         }
     },
