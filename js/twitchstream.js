@@ -1,9 +1,9 @@
 // Title: Twitch Stream List
-// Version: 2.0
+// Version: 2.5
 // Author: Noah Shrader
 // Website: http://www.noahshrader.com
-// Modded by Kweh for use on the Qubetubers site.
-// Rewritten with hitbox support by freaktechnik
+// Modded by Kweh and 100chilly for use on the Qubed Q3 site.
+
 
 var twitchUser = "qubedq3follows",
     hitbox = ["100chilly", "Soldjermon", "JennyLeeP"],
