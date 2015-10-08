@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript">
-        window.ParsleyConfig = {excluded: ".exclude"};
-        var usp_case_sensitivity = "false";
-        var usp_challenge_response = "2";
-    </script>
     <script src='../js/jquery/jquery.js?ver=1.11.2'></script>
     <script src='../js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
     <script src="../js/twitchstream.js"></script>
@@ -43,6 +38,7 @@
         <ul class="right hide-on-med-and-down">
             <li><a class="white-text" href="../">Home</a>
             <li><a class="white-text" href="http://forum.qubedq3.com/">Forums</a>
+            <li><a class="white-text" href="../elite">Elite: Dangerous</a>
             <li><a class="white-text" href="./">Twitch/Hitbox Streams</a>
             <li><a class="white-text" href="../irc">IRC</a>
             </li>
@@ -51,6 +47,7 @@
         <ul id="nav-mobile" class="side-nav black">
           <li><a class="white-text" href="../">Home</a>
           <li><a class="white-text" href="http://forum.qubedq3.com/">Forums</a>
+          <li><a class="white-text" href="../elite">Elite: Dangerous</a>
           <li><a class="white-text" href="./">Twitch/Hitbox Streams</a>
           <li><a class="white-text" href="../irc">IRC</a>
         </ul>
@@ -59,9 +56,9 @@
     </div>
 </nav>
 
-<div id="index-banner" class="container">
+<div class="streaming container" id="index-banner" >
     <div class="section no-pad-bot">
-        <div class="streaming row" id="content" role="main">
+        <div class="row" id="content" role="main">
             <h1 class="page-title white-text"><span class="stitle"></span></h1>
             <!-- Player -->
             <section id="top">
@@ -84,8 +81,7 @@
                         <iframe width="70%" height="450" src="" frameborder="0"
                                 class="live_embed_player" id="hitbox_player"
                                 allowfullscreen></iframe>
-                        <iframe frameborder="0" scrolling="no" id="chat_embed"
-                                src="" height="450" width="29%"></iframe>
+                            <iframe frameborder="0" scrolling="no" id="chat_embed" src="" height="450" width="29%"></iframe>
                     </div>
                 </div>
             </section>

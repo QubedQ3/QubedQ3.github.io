@@ -6,6 +6,17 @@
  * Made By MaterializeCSS.com
  */
 
+html{
+  font-family: 'Michroma', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.streaming {
+    width: 90%;
+    margin: 0 auto 20px;
+    min-height: 150px;
+}
+
 nav ul a,
 nav .brand-logo {
     color: #444;
