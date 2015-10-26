@@ -16,6 +16,8 @@
           media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet"
           media="screen,projection"/>
+    <link href="../css/video.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
 </head>
 <body class="black">
 <nav class="black" role="navigation">
@@ -27,7 +29,7 @@
             <li><a class="white-text" href="http://forum.qubedq3.com/">Forums</a>
             <li><a class="white-text" href="../watch">Streams</a>
             <li><a class="white-text" href="../irc">IRC</a>
-            <li><a class="white-text" href="./">QIED</a>
+            <li><a class="white-text" href="./">QI</a>
         </ul>
 
         <ul id="nav-mobile" class="side-nav black">
@@ -35,28 +37,28 @@
           <li><a class="white-text" href="http://forum.qubedq3.com/">Forums</a>
           <li><a class="white-text" href="../watch">Streams</a>
           <li><a class="white-text" href="../irc">IRC</a>
-          <li><a class="white-text" href="./">QIED</a>
+          <li><a class="white-text" href="./">QI</a>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i
                 class="material-icons">menu</i></a>
     </div>
 </nav>
 
-<div style="font-family:Michroma" id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br><br>
-      <h1 class="header center amber-text text-darken-3">Q3 Industries</h1>
-      <div class="row center">
-        <h5 class="header col red-text text-accent-4 s12 dark">Getting the job done since 3301.</h5>
-      </div>
-      <br><br>
-
+<div style="font-family:Michroma" id="index-banner" class="parallax-container text-overlay-example section no-pad-bot">
+    <div class="outer-wrap">
+        <div id="video-wrap" class="video-wrap ">
+            <video preload="metadata" autoplay loop id="my-video">
+                <source src="../video/v1.mp4" type="video/mp4">
+            </video>
+            <div class="content-overlay">
+                <h1 class="header center amber-text text-darken-3">Q3 Industries</h1>
+                <div class="row center">
+                <h5 class="header col red-text text-accent-4 s12 dark">Getting the job done since 3301.</h5>
+            </div>
+        </div>
+       </div>
     </div>
-  </div>
-  <div class="parallax"><img src="../img/EliteDangerous3.jpg" alt="Unsplashed background img 1"></div>
 </div>
-
 
 <div style="font-family:Michroma" class="container">
   <div class="section">
@@ -71,7 +73,6 @@
 </div>
 </div>
 
-
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
     <div class="container">
@@ -80,10 +81,10 @@
       </div>
     </div>
   </div>
-  <div class="parallax"><img src="../img/EliteDangerous2.jpg" alt="Unsplashed background img 3"></div>
+  <div class="parallax"><img src="../img/EliteDangerous3.jpg" alt="Unsplashed background img 3"></div>
 </div>
 
-<div class="container">
+<div class="container ">
   <div class="section">
     <div class="row">
       <div class="col s12 center">
@@ -139,6 +140,18 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="../js/materialize.js"></script>
 <script src="../js/init.js"></script>
+<script type="text/javascript" src="../js/backgroundVideo.js"></script>
+<script type="text/javascript" src="../js/backgroundVideo.min.js"></script>
+<script>
+$(document).ready(function() {
+            $('#my-video').backgroundVideo({
+                pauseVideoOnViewLoss: true,
+                parallaxOptions: {
+                    effect: 1.9
+                }
+            });
+        });
+</script>
 
 </body>
 </html>
