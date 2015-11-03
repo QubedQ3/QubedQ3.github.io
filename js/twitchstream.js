@@ -102,7 +102,7 @@ var twitchUser = "qubedq3follows",
                 jQuery("#chat_embed").css("height", "450px");
             }
             else {
-                jQuery("#chat_embed").css( "width", "29%" );
+                jQuery("#chat_embed").css("width", "29%" );
                 jQuery("#chat_embed").css("height", setheight+"px");
             }
 

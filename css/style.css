@@ -134,3 +134,8 @@ p {
 footer.page-footer {
     margin: 0;
 }
+
+#gv {
+width: 25%;
+margin: 0 auto;
+}
