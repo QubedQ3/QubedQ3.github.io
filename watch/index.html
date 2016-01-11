@@ -1,137 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script src='../js/jquery/jquery.js?ver=1.11.2'></script>
-    <script src='../js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
-    <script src="../js/twitchstream.js"></script>
-    <script src='../js/jquery/ui/core.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/widget.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/position.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/menu.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/autocomplete.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/button.min.js?ver=1.11.4'></script>
-    <script src='../js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
-    <script src='../js/init.js'></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <title>Qubed Q3 - Watch</title>
+    <head>
+        <script src='js/jquery/jquery.js?ver=1.11.2'></script>
+        <script src='js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+        <script src="js/twitchstream.js"></script>
+        <script src='js/jquery/ui/core.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/position.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/menu.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/autocomplete.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/button.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+        <script src='js/init.js'></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>Qubed Q3 - Watch</title>
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet"
-          media="screen,projection"/>
-    <link href="../css/style.css" type="text/css" rel="stylesheet"
-          media="screen,projection"/>
-</head>
-<body class="black">
-<nav class="black" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="../" class="brand-logo white-text"><img
-                src="../img/4adb656c.png""></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="white-text" href="../">Home</a>
-            <li><a class="white-text" href="http://forum.qubedq3.com/">Forums</a>
-            <li><a class="white-text" href="./">Streams</a>
-            <li><a class="white-text" href="../irc">IRC</a>
-            <li><a class="white-text" href="../servers">Servers</a>
-            <li><a class="white-text" href="../elite">QI</a>
-            </li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav black">
-          <li><a class="white-text" href="../">Home</a>
-          <li><a class="white-text" href="http://forum.qubedq3.com/">Forums</a>
-          <li><a class="white-text" href="./">Streams</a>
-          <li><a class="white-text" href="../irc">IRC</a>
-          <li><a class="white-text" href="../servers">Servers</a>
-          <li><a class="white-text" href="../elite">QI</a>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i
-                class="material-icons">menu</i></a>
-    </div>
-</nav>
-
-<div class="streaming container" id="index-banner" >
-    <div class="section no-pad-bot">
-        <div class="row" id="content" role="main">
-            <h1 class="page-title white-text"><span class="stitle"></span></h1>
-            <!-- Player -->
-            <div id="player">
-                        <object type="application/x-shockwave-flash"
-                                height="450" width="70%"
-                                class="live_embed_player"
-                                id="live_embed_player_flash" data=""
-                                bgcolor="#181818">
-                            <param name="allowFullScreen" value="true"/>
-                            <param name="allowScriptAccess" value="always"/>
-                            <param name="allowNetworking" value="all"/>
-                            <param name="movie"
-                                   value="http://www.twitch.tv/widgets/live_embed_player.swf"/>
-                            <param name="flashvars"
-                                   value="hostname=www.twitch.tv&auto_play=false&start_volume=25"/>
-                            <param name="wmode" value="opaque"/>
-                        </object>
-                        <iframe width="70%" height="450" src="" frameborder="0" class="live_embed_player" id="hitbox_player" allowfullscreen></iframe>
-                        <iframe frameborder="0" scrolling="no" id="chat_embed" src="" height="450" width="29%"></iframe>
-              </div>
-        </div>
-    </div>
-</div>
-
-<div class="row container">
-    <ul class="collection">
-        <li class="collection-item black white-text">When someone is live, the
-            video should load automatically.
-        </li>
-        <li class="collection-item black white-text">You can also see the live
-            status of our streamers below on their own channels. If you want to
-            switch to a different channel, simply click on the corresponding
-            box!
-        </li>
-    </ul>
-    <h6 id="members"></h6>
-</div>
-
-
-<footer class="page-footer black">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">About us</h5>
-
-                <p class="white-text">Who are we you ask? We are Qubed. We are gamers, artists, streamers, creators, and most of all friends. Born out of the ashes of a once great community that held together through the years thanks to the fabric of our friendship, we will rebuild. We will be stronger and better through our cooperative efforts. Our community leaders will be committed to keeping this a fun environment for people to play together. If you like what you see consider joining us and taking part in the fun.</p>
-
-
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
-                <ul>
-                    <li><a class="white-text" href="https://github.com/QubedQ3/">Github</a></li>
-                    <li><a class="white-text" href="https://player.me/qubed_q3">Player.me</a></li>
-                    <li><a class="white-text" href="https://twitter.com/Qubed_Q3">Twitter</a></li>
-                    <li><a class="white-text" href="https://plus.google.com/communities/116228174423171568779">Google+</a></li>
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet"
+              media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet"
+              media="screen,projection"/>
+    </head>
+    <body class="black">
+        <nav class="white">
+            <div class="nav-wrapper">
+                <a href="" class="brand-logo"><img src="img/Q3_Logo.png" height="60"></a>
+                <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="black-text" href="https://www.qubedq3.com/">Home</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/staff">Staff</a>
+                    <li><a class="black-text" href="http://forum.qubedq3.com/">Forums</a>
+                    <li><a class="black-text" href="./">Streams</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/servers">Servers</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/elite">ED</a>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a class="black-text" href="https://www.qubedq3.com/">Home</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/staff">Staff</a>
+                    <li><a class="black-text" href="http://forum.qubedq3.com/">Forums</a>
+                    <li><a class="black-text" href="./">Streams</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/servers">Servers</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/elite">ED</a>
                 </ul>
             </div>
+        </nav>
+
+        <div class="streaming container" id="index-banner" >
+            <div class="section no-pad-bot">
+                <div class="row" id="content" role="main">
+                    <h1 class="page-title white-text"><span class="stitle"></span></h1>
+                    <!-- Player -->
+                    <div id="player">
+                        <div class="col-left">
+                            <iframe width="70%" height="450" src="" frameborder="0" scrolling="no" class="live_embed_player" id="hitbox_player" allowfullscreen></iframe>
+                        </div>
+                        <div class="col-right">
+                            <iframe frameborder="0" scrolling="no" id="chat_embed" src="" height="450" width="29%"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container white-text">
-            Made by <a class="blue-text" href="https://github.com/QubedQ3/">Qubed Q3</a>
+
+        <div class="row container">
+            <ul class="collection">
+                <li class="collection-item black white-text">When someone is live, the
+                    video should load automatically.
+                </li>
+                <li class="collection-item black white-text">You can also see the live
+                    status of our streamers below on their own channels. If you want to
+                    switch to a different channel, simply click on the corresponding
+                    box!
+                </li>
+            </ul>
+            <h6 id="members"></h6>
         </div>
-    </div>
-</footer>
 
 
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="../js/materialize.js"></script>
-<script src="../js/init.js"></script>
+        <footer class="page-footer white">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="black-text">About us</h5>
+                        <p class="black-text">Who are we you ask? We are Qubed. We are gamers, artists, streamers, creators, and most of all friends. Born out of the ashes of a once great community that held together through the years thanks to the fabric of our friendship, we will rebuild. We will be stronger and better through our cooperative efforts. Our community leaders will be committed to keeping this a fun environment for people to play together. If you like what you see consider joining us and taking part in the fun.</p>
 
-</body>
+
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="black-text">Connect</h5>
+                        <ul>
+                            <li><a class="black-text" href="https://github.com/QubedQ3/">Github</a></li>
+                            <li><a class="black-text"" href="https://player.me/qubed_q3">Player.me</a></li>
+                            <li><a class="black-text" href="https://twitter.com/Qubed_Q3">Twitter</a></li>
+                            <li><a class="black-text" href="https://plus.google.com/communities/116228174423171568779">Google+</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright black">
+                <div class="container white-text">
+                    Made by <a class="blue-text" href="https://github.com/QubedQ3/">Qubed Q3</a>
+                </div>
+            </div>
+        </footer>
+
+
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+
+    </body>
 </html>

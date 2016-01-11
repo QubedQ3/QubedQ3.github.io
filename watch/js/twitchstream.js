@@ -5,7 +5,7 @@
 // Modded by Kweh and 100chilly for use on the Qubed Q3 site.
 
 
-var twitchUser = "qubedq3follows",
+var twitchUser = "q3follower",
     hitbox = ["100chilly", "Soldjermon", "JennyLeeP"],
     social = {kweeeeh: "kweh"},
 
