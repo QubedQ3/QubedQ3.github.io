@@ -53,13 +53,13 @@ var twitchUser = "q3follower",
 
                 // show the player matching the current user, twitch player preferred
                 if(user.twitch && (!user.live() || user.tlive)) {
-                    jQuery("#hitbox_player").attr("src", "http://player.twitch.tv/?channel=" + user.twitch);
-                    jQuery('#chat_embed').attr("src","http://twitch.tv/" + user.twitch + "/chat");
+                    jQuery("#hitbox_player").attr("src", "https://player.twitch.tv/?channel=" + user.twitch);
+                    jQuery('#chat_embed').attr("src","https://twitch.tv/" + user.twitch + "/chat");
                     this.currentPlayer = this.TWITCH_PLAYER;
                 }
                 else if(user.hitbox && (!user.live() || user.hlive)) {
-                    jQuery("#hitbox_player").attr("src", "http://hitbox.tv/#!/embed/" + user.hitbox);
-                    jQuery('#chat_embed').attr("src","http://hitbox.tv/embedchat/"+ user.hitbox);
+                    jQuery("#hitbox_player").attr("src", "https://hitbox.tv/#!/embed/" + user.hitbox);
+                    jQuery('#chat_embed').attr("src","https://hitbox.tv/embedchat/"+ user.hitbox);
                     this.currentPlayer = this.HITBOX_PLAYER;
                 }
                 else {
@@ -285,7 +285,7 @@ var twitchUser = "q3follower",
                         user.viewers = 0;
                         user.game = d.livestream[0].category_name;
                     }
-                    user.avatar = "http://edge.sf.hitbox.tv"+d.livestream[0].channel.user_logo;
+                    user.avatar = "https://edge.sf.hitbox.tv"+d.livestream[0].channel.user_logo;
                     if(user.name === User.prototype.name)
                         user.name = d.livestream[0].channel.user_name;
 
