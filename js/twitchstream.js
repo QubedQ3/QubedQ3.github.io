@@ -1,3 +1,5 @@
+/* global NO_PLAYER */
+
 // Title: Twitch Stream List
 // Version: 2.5
 // Author: Noah Shrader
@@ -5,19 +7,28 @@
 // Modded by Kweh and 100chilly for use on the Qubed Q3 site.
 
 
-var twitchUser = "qubedq3follows",
-    hitbox = ["100chilly", "Soldjermon", "JennyLeeP"],
-    social = {kweeeeh: "kweh"},
-
+var twitchUser = "q3follow",
+    twitchLoad = function(url, callback) {
+        jQuery.ajax({
+            url: 'https://api.twitch.tv/kraken/' + url,
+            dataType: 'json',
+            headers: {
+                "Client-ID": "3r9xxl9vect563p9npg9x70u8gwoy9v",
+                "Accept": "application/vnd.twitchtv.v3+json"
+            },
+            success: callback 
+        });
+    },
     Page = {
-        // This is where the DOM manipulation happens. You may call it the view.
+               // This is where the DOM manipulation happens. You may call it the view.
         NO_PLAYER: 0,
         TWITCH_PLAYER: 1,
-        HITBOX_PLAYER: 2,
         currentPlayer: this.NO_PLAYER,
         currentUser: "",
         ignoreNextHash: false,
         initialized: false,
+        player: jQuery("#twitch_player"),
+        chat: jQuery("#chat_embed"),
         hidePlayer: function() {
             this.currentPlayer = this.NO_PLAYER;
             this.currentUser = "";
@@ -28,10 +39,10 @@ var twitchUser = "qubedq3follows",
                 }
                 window.location.hash = "";
             }
-            jQuery("#chat_embed").hide();
-            jQuery("#chat_embed").attr("src", "");
-            jQuery("#hitbox_player").hide();
-            jQuery("#hitbox_player").attr("src", "");
+            this.chat.hide();
+            this.chat.attr("src", "");
+            this.player.hide();
+            this.player.attr("src", "");
         },
         showPlayer: function(user) {
             jQuery("#player").hide();
@@ -39,29 +50,24 @@ var twitchUser = "qubedq3follows",
                 this.hidePlayer();
                 return;
             }
-            if(this.currentUser != user.name) {
+            if(this.currentUser !== user.name) {
                 this.currentUser = user.name;
-                if(window.location.hash != "#"+user.name) {
+                if(window.location.hash !== "#"+user.name) {
                     this.ignoreNextHash = true;
                     window.location.hash = "#"+user.name;
                 }
 
-                if(this.currentPlayer == this.NO_PLAYER) {
-                    jQuery("#chat_embed").show();
-                    jQuery("#hitbox_player").show();
+                if(this.currentPlayer === this.NO_PLAYER) {
+                    this.chat.show();
+                    this.player.show();
                 }
 
                 // show the player matching the current user, twitch player preferred
-                if(user.twitch && (!user.live() || user.tlive)) {
-                    jQuery("#hitbox_player").attr("src", "http://player.twitch.tv/?channel=" + user.twitch);
-                    jQuery('#chat_embed').attr("src","http://twitch.tv/" + user.twitch + "/chat");
-                    this.currentPlayer = this.TWITCH_PLAYER;
-                }
-                else if(user.hitbox && (!user.live() || user.hlive)) {
-                    jQuery("#hitbox_player").attr("src", "http://hitbox.tv/#!/embed/" + user.hitbox);
-                    jQuery('#chat_embed').attr("src","http://hitbox.tv/embedchat/"+ user.hitbox);
-                    this.currentPlayer = this.HITBOX_PLAYER;
-                }
+			if(user.twitch && (!user.live() || user.tlive)) {
+                this.player.attr('src', 'https://player.twitch.tv/?channel=' + user.twitch);
+                this.chat.attr("src","https://www.twitch.tv/" + user.twitch + "/chat?popout=");
+                this.currentPlayer = this.TWITCH_PLAYER;
+			}
                 else {
                     this.hidePlayer();
                     return;
@@ -69,7 +75,7 @@ var twitchUser = "qubedq3follows",
                 this.setTitle(user);
 
                 var that = this;
-                jQuery('#player').show(400, function() {
+                jQuery('#player').show(function() {
                     that.sizePlayer();
                 });
             }
@@ -77,26 +83,27 @@ var twitchUser = "qubedq3follows",
         sizePlayer: function() {
             // need to use #player, as the flash object has no width at that point in time, could do a loop to wait for it instead, but this results in the same value
             var vidwidth = jQuery("#player").width();
+            var swidth = jQuery(".streaming").width();
 
-            if(jQuery(".streaming").width() >= '1074') {
+            if(swidth >= '1074') {
                 vidwidth = Math.round(vidwidth *0.7);
             }
             // 31 is the height of the twitch player control bar
             var setheight = Math.round((vidwidth / 16) * 9);
 
-            if(jQuery(".streaming").width() < '1074') {
-                jQuery("#chat_embed").css("width", "100%");
-                jQuery("#chat_embed").css("height", "450px");
+            if(swidth < '1074') {
+                this.chat.css("width", "100%");
+                this.chat.css("height", "450px");
             }
             else {
-                jQuery("#chat_embed").css( "width", "29%" );
-                jQuery("#chat_embed").css("height", setheight+"px");
+                this.chat.css( "width", "29%" );
+                this.chat.css("height", setheight+"px");
             }
 
-            jQuery("#hitbox_player").css( {"height": setheight+"px", 'margin-bottom': '0'} );
-            jQuery("#hitbox_player").attr("height", setheight+"");
-            if(jQuery(".streaming").width() >= '1074') {
-                jQuery("#chat_embed").css("height", setheight+"px");
+            this.player.css({ height: setheight+"px", 'margin-bottom': '0'});
+            this.player.attr("height", setheight+"");
+            if(swidth >= '1074') {
+                this.chat.css("height", setheight+"px");
             }
         },
         // Adds the little user card
@@ -119,8 +126,9 @@ var twitchUser = "qubedq3follows",
         },
         // Updates the content of the little user card
         updateUser: function(user) {
-            if(jQuery("#"+user.name).html()) {
-                var userLive = jQuery('#' + user.name).hasClass("online"),
+            var userElement = jQuery("#" + user.name);
+            if(userElement.html()) {
+                var userLive = userElement.hasClass("online"),
                     viewers = 'Offline',
                     game = 'Last played: ',
                     liveClass = 'offline';
@@ -137,13 +145,13 @@ var twitchUser = "qubedq3follows",
                 }
 
                 if(userLive && !user.live()) {
-                    jQuery("#"+user.name).removeClass("online");
+                    userElement.removeClass("online");
                 }
                 else if(!userLive && user.live()) {
-                    jQuery("#"+user.name).removeClass("offline");
+                    userElement.removeClass("offline");
                 }
-                jQuery('#'+user.name).addClass(liveClass);
-                jQuery('#'+user.name+' img').attr("src", user.avatar);
+                userElement.addClass(liveClass);
+                userElement.attr("src", user.avatar);
                 if(user.live() || user.live() !== userLive) {
                     jQuery('#'+user.name+' .viewers').html(viewers);
                     jQuery('#'+user.name+' .game').html(game+user.game);
@@ -164,7 +172,7 @@ var twitchUser = "qubedq3follows",
         list: [],
         isLive: function() {
             return this.list.some(function(user) {
-                return user.live;
+                return user.live();
             });
         },
         getUserByName: function(name) {
@@ -188,19 +196,10 @@ var twitchUser = "qubedq3follows",
             });
             return ret;
         },
-        getHitboxUsers: function() {
-            var ret = [];
-            this.list.forEach(function(user) {
-                if(user.hitbox !== "") {
-                    ret.push(user);
-                }
-            });
-            return ret;
-        },
         getTwitchUserByName: function(name) {
             var retUser, cond;
             this.getTwitchUsers().some(function(user) {
-                cond = user.twitch === name;
+                cond = user.twitch.toLowerCase() === name;
                 if(cond) {
                     retUser = user;
                 }
@@ -210,9 +209,6 @@ var twitchUser = "qubedq3follows",
         },
         refresh: function() {
             this.updateTwitch(this.getTwitchUsers());
-            this.getHitboxUsers().forEach(function(user) {
-                this.updateHitbox(user);
-            }, this);
         },
         // Bulk updates all the twitch users, the argument is a comma separated list of their usernames.
         updateTwitch: function(users) {
@@ -220,7 +216,7 @@ var twitchUser = "qubedq3follows",
             users.forEach(function(user) {
                 user.tlive = false;
             });
-            jQuery.getJSON('https://api.twitch.tv/kraken/streams?channel=' + users.join(",") + '&callback=?', function(d) {
+            twitchLoad('streams?channel=' + users.join(","), function(d) {
                 if(d.streams.length>0) {
                     d.streams.forEach(function(stream) {
                         user = this.getTwitchUserByName(stream.channel.name);
@@ -251,7 +247,7 @@ var twitchUser = "qubedq3follows",
         },
         getTwitchUserInfo: function(user) {
             var that = this;
-            jQuery.getJSON('https://api.twitch.tv/kraken/channels/' + user.twitch + '?callback=?', function(d) {
+            twitchLoad('channels/' + user.twitch, function(d) {
                 if(typeof d === 'object') {
                     if(!user.live()) {
                         if(d.game !== null) {
@@ -263,31 +259,6 @@ var twitchUser = "qubedq3follows",
                         user.name = d.display_name;
                     if(d.logo)
                         user.avatar = d.logo;
-
-                    Page.updateUser(user);
-                    user.ready = true;
-
-                    if(that.onready && that.ready()) that.onready();
-                }
-            });
-        },
-        // Each user with hitbox has to be hit individually by this function.
-        updateHitbox: function(user) {
-            var that = this;
-            jQuery.getJSON('https://api.hitbox.tv/media/live/' + user.hitbox, function(d) {
-                if(typeof d === 'object') {
-                    user.hlive == d.livestream[0].media_is_live != "0";
-                    if(user.hlive && !user.tlive) {
-                        user.game = d.livestream[0].category_name;
-                        user.viewers = d.livestream[0].media_views;
-                    }
-                    else if(!user.live()) {
-                        user.viewers = 0;
-                        user.game = d.livestream[0].category_name;
-                    }
-                    user.avatar = "http://edge.sf.hitbox.tv"+d.livestream[0].channel.user_logo;
-                    if(user.name === User.prototype.name)
-                        user.name = d.livestream[0].channel.user_name;
 
                     Page.updateUser(user);
                     user.ready = true;
@@ -311,12 +282,8 @@ var twitchUser = "qubedq3follows",
  */
 // the user's twitch username
 User.prototype.twitch = "";
-// the user's hitbox username
-User.prototype.hitbox = "";
 // true, if the user is live on twitch
 User.prototype.tlive = false;
-// true, if the user is live on hitbox
-User.prototype.hlive = false;
 // An URL pointing to an avatar image representing this user
 User.prototype.avatar = "../img/fYdty6yd.png";
 // The displayed name for this user
@@ -332,7 +299,7 @@ function User() {
 }
 // Returns true if the user is live on any service
 User.prototype.live = function() {
-    return this.hlive || this.tlive;
+    return this.tlive;
 };
 
 // Returns the user's twitch username, so we can conveniently .join all the users for the twitchrequest.
@@ -345,63 +312,53 @@ jQuery(document).ready(function( $ ) {
 
     /*
      Complicated initialization path.
-     First, all hitbox users get added (see after this method assignement).
-     After that, when all hitbox users's details have been loaded, the twitch users get added.
-     And after all the twitch user's details have been added too, the default state for the displayed player is chosen.
+     First the twitch users get added.
+     And after all the twitch user's details have been added, the default state for the displayed player is chosen.
      */
     UserList.onready = function() {
-        UserList.onready = function() {
-            // If the user entered the page with a user already selected, directly show that user
-            if(window.location.hash.length > 1) {
-                Page.showPlayer(UserList.getUserByName(window.location.hash.slice(1)));
+        // If the user entered the page with a user already selected, directly show that user
+        if(window.location.hash.length > 1) {
+            Page.showPlayer(UserList.getUserByName(window.location.hash.slice(1)));
+        }
+        else {
+            var allOffline = UserList.list.every(function(user) {
+                return !user.live();
+            });
+            if(allOffline || UserList.getTwitchUserByName("qubed_q3").live()) {
+                Page.showPlayer(UserList.getTwitchUserByName("qubed_q3"));
             }
             else {
-                var allOffline = UserList.list.every(function(user) {
-                    return !user.live();
+                UserList.list.some(function(user) {
+                    if(user.live())
+                        Page.showPlayer(user);
+                    return user.live();
                 });
-                if(allOffline) {
-                    Page.showPlayer(UserList.getTwitchUserByName("qubed_q3"));
+            }
+        }
+        Page.initialized = true;
+        // Thanks, we're done here (else updates will make the page run through this again)
+        UserList.onready = null;
+    };
+    twitchLoad("users/"+ twitchUser + "/follows/channels?limit=250", function(data) {
+        if(data && data.follows.length > 0) {
+            // Now, load the twitch users (we're coming from methods invoked async around line 420)
+            data.follows.forEach(function(user, i, a) {
+                var newUser, existingUser = UserList.getUserByName(user.channel.name);
+                if(!existingUser) {
+                    newUser = new User();
+                    newUser.twitch = user.channel.name;
+                    UserList.list.push(newUser);
                 }
                 else {
-                    UserList.list.some(function(user) {
-                        if(user.live())
-                            Page.showPlayer(user);
-                        return user.live();
-                    });
+                    UserList.getUserByName(user.channel.name).twitch = user.channel.name;
                 }
-            }
-            Page.initialized = true;
-            // Thanks, we're done here (else updates will make the page run through this again)
-            UserList.onready = null;
-        };
-        jQuery.getJSON("https://api.twitch.tv/kraken/users/"+ twitchUser + "/follows/channels?limit=250&callback=?", function(data) {
-            if(data && data.follows.length > 0) {
-                // Now, load the twitch users (we're coming from methods invoked async around line 420)
-                data.follows.forEach(function(user, i, a) {
-                    var newUser, existingUser = UserList.getUserByName(user.channel.name);
-                    if(!existingUser) {
-                        newUser = new User();
-                        newUser.twitch = user.channel.name;
-                        UserList.list.push(newUser);
-                    }
-                    else {
-                        UserList.getUserByName(user.channel.name).twitch = user.channel.name;
-                    }
 
-                    if(i+1 === a.length) {
-                        // Load all twitch user's user data plus their livestatus
-                        UserList.updateTwitch(UserList.getTwitchUsers());
-                    }
-                });
-            }
-        });
-    };
-    // Here is where the hitbox users get added
-    hitbox.forEach(function(name) {
-        var newUser = new User();
-        newUser.hitbox = name;
-        UserList.list.push(newUser);
-        UserList.updateHitbox(newUser);
+                if(i+1 === a.length) {
+                    // Load all twitch user's user data plus their livestatus
+                    UserList.updateTwitch(UserList.getTwitchUsers());
+                }
+            });
+        }
     });
 
     // Display the player of the streamer the user just selected
