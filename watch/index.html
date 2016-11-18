@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src='js/jquery/jquery-3.1.1.min.js'></script>
-        <script src='js/jquery/jquery-migrate.min.js'></script>
-        <script src='js/jquery/jquery-ui.js'></script>
-        <script src='js/jquery/jquery-ui.min.js'></script>
+        <script src='js/jquery/jquery.js?ver=1.11.2'></script>
+        <script src='js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>      
+        <script src='js/jquery/ui/core.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/position.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/menu.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/autocomplete.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/button.min.js?ver=1.11.4'></script>
+        <script src='js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+        <script src='js/init.js'></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
         <title>Qubed Q3 - Watch</title>
@@ -12,31 +23,31 @@
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet">
-        <link href="../css/materialize.css" type="text/css" rel="stylesheet"
+        <link href="css/materialize.css" type="text/css" rel="stylesheet"
               media="screen,projection"/>
-        <link href="../css/style.css" type="text/css" rel="stylesheet"
+        <link href="css/style.css" type="text/css" rel="stylesheet"
               media="screen,projection"/>
     </head>
     <body class="black">
         <nav class="white">
             <div class="nav-wrapper">
-                <a href="../" class="brand-logo"><img src="img/Q3_Logo.png" height="60"></a>
+                <a href="" class="brand-logo"><img src="img/Q3_Logo.png" height="60"></a>
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="black-text" href="../">Home</a>
-                    <li><a class="black-text" href="../staff">Staff</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/">Home</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/staff">Staff</a>
                     <li><a class="black-text" href="http://dzone.qubedq3.com/">Discord Sim</a>
                     <li><a class="black-text" href="./">Streams</a>
-                    <li><a class="black-text" href="../servers">Servers</a>
-                    <li><a class="black-text" href="../tos">Terms & Privacy Policies</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/servers">Servers</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/elite">ED</a>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li><a class="black-text" href="../">Home</a>
-                    <li><a class="black-text" href="../staff">Staff</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/">Home</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/staff">Staff</a>
                     <li><a class="black-text" href="http://dzone.qubedq3.com/">Discord Sim</a>
                     <li><a class="black-text" href="./">Streams</a>
-                    <li><a class="black-text" href="../servers">Servers</a>
-                    <li><a class="black-text" href="../tos">Terms & Privacy Policies</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/servers">Servers</a>
+                    <li><a class="black-text" href="https://www.qubedq3.com/elite">ED</a>
                 </ul>
             </div>
         </nav>
@@ -48,7 +59,7 @@
                     <!-- Player -->
                     <div id="player">
                         <div class="col-left">
-                            <iframe width="70%" height="450" src="" frameborder="0" scrolling="no" class="live_embed_player" id="twitch_player" allowfullscreen></iframe>
+                            <iframe width="70%" height="450" src="" frameborder="0" scrolling="no" class="live_embed_player" id="hitbox_player" allowfullscreen></iframe>
                         </div>
                         <div class="col-right">
                             <iframe frameborder="0" scrolling="no" id="chat_embed" src="" height="450" width="29%"></iframe>
@@ -103,9 +114,9 @@
 
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="../js/twitchstream.js"></script>
-        <script src="../js/materialize.js"></script>
-        <script src="../js/init.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/twitchstream.js"></script>
 
     </body>
 </html>
