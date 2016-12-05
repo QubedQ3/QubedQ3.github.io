@@ -2,7 +2,6 @@
 Content/Source for Qubed Q3's Website
 
 ##Libaries Used
-backgroundVideo By @linnett (https://github.com/linnett/backgroundVideo)
 jQuery by @jquery (https://jquery.com/)
 
 ###List of Contributors/Programmers
