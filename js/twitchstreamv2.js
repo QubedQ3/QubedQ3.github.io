@@ -36,7 +36,7 @@ function populateUserList()
 		headers:
 		{
 			"Client-ID": mainClientID,
-			"Accept": "application/vnd.twitchtv.v5+json"
+			"Accept": mainAcceptToken
 		},
 		type: 'GET',
 		contentType: 'application/json',
@@ -97,7 +97,7 @@ function updateUserLiveStatus(userdata)
 		headers:
 		{
 			"Client-ID": mainClientID,
-			"Accept": "application/vnd.twitchtv.v5+json"
+			"Accept": mainAcceptToken
 		},
 		type: 'GET',
 		contentType: 'application/json',
@@ -154,7 +154,7 @@ function updateUserCard(userdata)
 	{
 		var uLive = cardElement.hasClass("online");
 		var viewers = "Offline";
-		var game = "Last playyed: ";
+		var game = "Last played: ";
 		var lClass = "offline";
 
 		//User is live
