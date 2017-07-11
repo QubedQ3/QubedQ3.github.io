@@ -3,7 +3,7 @@
 // Author: Jari Senhorst
 // Website: http://jarisenhorst.com
 // Note: This script uses html data from the old Twitch Stream List 
-// script that was modded by 100chilly and Kweh for use on the Qubed Q3 site.
+// script that was modded by 100chilly and Kweh for use on the Qubed Q3 site and related projects.
 //
 // This script is basically a rewrite of Noah Shrader's Twitch Stream List script, 
 // but this script works with Twitch API V5.
@@ -13,7 +13,7 @@ var mainUserID = "139203270"; //The userID to pull the followers from
 var mainClientID = "3r9xxl9vect563p9npg9x70u8gwoy9v"; //The userID's Client-ID
 var mainAcceptToken = "application/vnd.twitchtv.v5+json"; //The accept token
 var twitchAPIUrl = "https://api.twitch.tv/kraken"; //The Twitch API URL to use
-var updateRate = 60000; //The refresh rate of the script (default 60000 milliseconds, 1 minute)
+var updateRate = 300000; //The refresh rate of the script (default 300000 milliseconds, 5 minutes)
 var twitchElementName = "#twitch_player"; //The name of the Twitch player element
 var twitchChatElementName = "#chat_embed"; //The name of the Twitch chat element
 
@@ -22,6 +22,8 @@ var userList; //The raw follower data, as received from Twitch
 var userDefList = new Array(); //The list with our custom user definition objects
 var twitchPlayer; //The variable that will hold the twitch player from our watch page
 var twitchChat; //The variable that will hold our embedded Twitch chat element
+var processedDefs = 0;
+var defProcessingDone = false;
 
 /////// Script start ////////
 jQuery(document).ready(function( $ ) 
@@ -57,7 +59,7 @@ function populateUserList()
 		},
 		type: 'GET',
 		contentType: 'application/json',
-		url: twitchAPIUrl + '/users/' + mainUserID + '/follows/channels',
+		url: twitchAPIUrl + '/users/' + mainUserID + '/follows/channels?limit=100',
 		success: onUserListRetrieved
 	});
 	
@@ -101,6 +103,7 @@ function setupUserDefinitions()
 		updateUserLiveStatus(uData);
 		userCardCreate(uData);
 	}
+	
 	onUserOperationsFinished();
 }
 
@@ -163,6 +166,17 @@ function updateUserLiveStatus(userdata)
 			else 
 			{
 				userdata.isUserLive = true;
+				userdata.userViewers = data['stream']['viewers'];
+			}
+			updateUserCard(userdata);
+			if(defProcessingDone == false)
+			{
+				processedDefs++;
+				if(processedDefs == userDefList.length)
+				{
+					onUserOperationsFinished();
+					defProcessingDone = true;
+				}
 			}
 		}
 	});
@@ -190,9 +204,10 @@ function userDataDefinition(name, avatar, viewers, game, username, chanID)
 ///
 function updateUserCards()
 {
-	for(var i = 0, len = userList.length; i < len; i++)
+	for(var i = 0, len = userDefList.length; i < len; i++)
 	{
-		updateUserCard(userDefList[i]);
+		updateUserLiveStatus(userDefList[i]); //Update the live status
+		//updateUserCard(userDefList[i]);
 	}
 }
 
@@ -201,8 +216,6 @@ function updateUserCards()
 ///
 function updateUserCard(userdata)
 {
-	updateUserLiveStatus(userdata); //Update the live status
-	
 	//Edit the card
 	var cardElement = jQuery("#" + userdata.userName);
 	if(cardElement.html())
@@ -215,7 +228,7 @@ function updateUserCard(userdata)
 		//User is live
 		if(userdata.isUserLive == true)
 		{
-			viewers = userdata.viewers + " viewers";
+			viewers = userdata.userViewers + " viewers";
 			game = "Playing: ";
 			lClass = "online";
 			
